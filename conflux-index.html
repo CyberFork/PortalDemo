@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conflux Simple Demo</title>
+    <script type="text/javascript" src="web3.min.js"></script>
+    <script type="text/javascript" src="conflux-example.js"></script>
+  </head>
+  <style>
+    body {
+      font-size: 1rem;
+    }
+
+    .btn {
+      transform: translate(-50%, -50%);
+      width: 230px;
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      color: #fff;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+      background-size: 400%;
+      border-radius: 60px;
+    }
+
+    .btn:hover {
+      animation: animate 8s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        background-position: 0%;
+      }
+
+      100% {
+        background-position: 400%;
+      }
+    }
+
+    .btn::before {
+      content: "";
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      z-index: -1;
+      background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+      background-size: 400%;
+      border-radius: 40px;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      filter: blur(20px);
+      opacity: 1;
+      animation: animate 8s linear infinite;
+    }
+
+    .btn-text {
+      margin: 3.125rem;
+    }
+
+    .result-text {
+      line-height: 3.125rem;
+      margin-left: 0.625rem;
+    }
+
+    .text-box {
+      color: #e0e2e4;
+      background: #282b2e;
+      border-radius: 5px;
+    }
+  </style>
+  <body>
+    <div>
+      <b class="btn" onclick="connectConfluxPortal()"
+        ><span class="btn-text">Connecting to ConfluxPortal</span></b
+      >
+      <div class="text-box">
+        <p class="result-text" id="network"></p>
+        <p class="result-text" id="account"></p>
+      </div>
+    </div>
+    <div>
+      <b class="btn" onclick="initContract()"
+        ><span class="btn-text">Init Smart Contract</span></b
+      >
+      <div class="text-box">
+        <p class="result-text" id="contractAddress"></p>
+      </div>
+    </div>
+    <div id="use" hidden>
+      <b class="btn" onclick="getAccountInfo()"
+        ><span class="btn-text">Get Account Info</span></b
+      >
+      <div class="text-box">
+        <pre><code id="getAccountInfoOf"></code></pre>
+        <!-- <p class="result-text" id="getAccountInfoOf"></p> -->
+      </div>
+    </div>
+    <div id="send" hidden>
+      <b class="btn" onclick="sendTransaction()"
+        ><span class="btn-text">Send Transaction</span></b
+      >
+      <div class="text-box">
+        <pre><code id="getTransactionByHash"></code></pre>
+        <!-- <p class="result-text" id="getTransactionByHash"></p> -->
+      </div>
+    </div>
+  </body>
+</html>
